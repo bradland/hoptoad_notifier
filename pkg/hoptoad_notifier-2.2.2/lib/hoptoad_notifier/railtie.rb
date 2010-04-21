@@ -8,9 +8,11 @@ module HoptoadNotifier
     rake_tasks do
       require "hoptoad_notifier/rails3_tasks"
     end
-
-    config.middleware.insert_after ActionDispatch::ShowExceptions, HoptoadNotifier::Rack
-
+    
+    initializer "hoptoad_notifier.configure_rails_initialization" do |app|
+      app.middleware.insert_after ActionDispatch::ShowExceptions, HoptoadNotifier::Rack
+    end
+    
     config.after_initialize do
       HoptoadNotifier.configure(true) do |config|
         config.logger           = Rails.logger
