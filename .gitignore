@@ -10,3 +10,5 @@ rdoc/
 tags
 .yardoc
 doc
+pkg
+*.gemspec
