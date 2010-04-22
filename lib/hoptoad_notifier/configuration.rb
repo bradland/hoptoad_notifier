@@ -197,6 +197,7 @@ module HoptoadNotifier
     # Determines if the notifier will send notices.
     # @return [Boolean] Returns +false+ if in a development environment, +true+ otherwise.
     def public?
+      debugger
       !development_environments.include?(environment_name)
     end
 
