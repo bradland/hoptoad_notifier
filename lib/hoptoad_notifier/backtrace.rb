@@ -89,10 +89,12 @@ module HoptoadNotifier
     attr_writer :lines
 
     def self.split_multiline_backtrace(backtrace)
-      if backtrace.to_a.size == 1
-        backtrace.to_a.first.split(/\n\s*/)
+      backtrace_array = backtrace.respond_to?(:to_a) ? backtrace.to_a : [backtrace]
+
+      if backtrace_array.size == 1
+        backtrace_array.first.split(/\n\s*/)
       else
-        backtrace
+        backtrace_array
       end
     end
   end
